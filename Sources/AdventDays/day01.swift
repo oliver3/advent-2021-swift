@@ -1,4 +1,18 @@
-func day01() {}
+public func day01PartOne(_ input: [Int]) -> Int {
+  return input
+    .slidingWindow(2)
+    .filter { $0[0] < $0[1] }
+    .count
+}
+
+public func day01PartTwo(_ input: [Int]) -> Int {
+  return input
+    .slidingWindow(3)
+    .map { $0.reduce(0, +) }
+    .slidingWindow(2)
+    .filter { $0[0] < $0[1] }
+    .count
+}
 
 public extension Array {
   func slidingWindow(_ size: Int) -> [[Element]] {
