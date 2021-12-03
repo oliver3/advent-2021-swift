@@ -3,6 +3,7 @@ import Foundation
 
 let input01 = readInputAsInts("day01")
 let input02 = readInput("day02")
+let input03 = readInput("day03")
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
@@ -12,6 +13,9 @@ print("Day 02 part one: \(day02PartTwo(input02))")
 print()
 print("Day 02 part one (alt): \(day02PartOneAlternative(input02))")
 print("Day 02 part one (alt): \(day02PartTwoAlternative(input02))")
+print()
+print("Day 03 part one: \(day03PartOne(input03))")
+print("Day 03 part one: \(day03PartTwo(input03))")
 print()
 
 func readInput(_ day: String) -> [String] {
