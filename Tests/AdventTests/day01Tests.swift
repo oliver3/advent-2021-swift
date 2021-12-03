@@ -2,8 +2,8 @@
 import XCTest
 
 final class Day01Tests: XCTestCase {
-    func testDay01() throws {
-        let answer = day01([199, 200, 208, 210, 200, 207, 240, 269, 260, 263])
+    func testDay01PartOne() throws {
+        let answer = day01PartOne([199, 200, 208, 210, 200, 207, 240, 269, 260, 263])
         XCTAssertEqual(answer, 7)
     }
 

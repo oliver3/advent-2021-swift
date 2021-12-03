@@ -2,17 +2,25 @@ import AdventDays
 import Foundation
 
 let input01 = readInputAsInts("day01")
+let input02 = readInput("day02")
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
+print()
+print("Day 02 part one: \(day02PartOne(input02))")
+print("Day 02 part one: \(day02PartTwo(input02))")
+print()
+print("Day 02 part one (alt): \(day02PartOneAlternative(input02))")
+print("Day 02 part one (alt): \(day02PartTwoAlternative(input02))")
+print()
 
-
-func readInput(_ day: String) -> [Substring] {
+func readInput(_ day: String) -> [String] {
   let file = Bundle.module.url(forResource: "Inputs/\(day)", withExtension: "txt")
   let content = try! String(contentsOf: file!, encoding: .utf8)
   return content
     .trimmingCharacters(in: .whitespacesAndNewlines)
     .split(separator: "\n")
+    .map(String.init)
 }
 
 func readInputAsInts(_ day: String) -> [Int] {
