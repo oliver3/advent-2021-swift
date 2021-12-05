@@ -34,7 +34,7 @@ enum SubmarineCommand: Equatable {
     case let ("up", .some(units)):
       self = .up(units)
     default:
-      fatalError("Unknown SubmarineCommand \(s)")
+      fatalError("Unknown SubmarineCommand \"\(s)\"")
     }
   }
 }

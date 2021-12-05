@@ -4,6 +4,7 @@ import Foundation
 let input01 = readInputAsInts("day01")
 let input02 = readInput("day02")
 let input03 = readInput("day03")
+let input04 = readInput("day04")
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
@@ -17,13 +18,17 @@ print()
 print("Day 03 part one: \(day03PartOne(input03))")
 print("Day 03 part one: \(day03PartTwo(input03))")
 print()
+print("Day 04 part one: \(day04PartOne(input04))")
+print("Day 04 part two: \(day04PartTwo(input04))")
+print()
 
 func readInput(_ day: String) -> [String] {
   let file = Bundle.module.url(forResource: "Inputs/\(day)", withExtension: "txt")
   let content = try! String(contentsOf: file!, encoding: .utf8)
   return content
     .trimmingCharacters(in: .whitespacesAndNewlines)
-    .split(separator: "\n")
+    // Do not forget omittingEmptySubsequences false or else empty lines are not returned wtf
+    .split(separator: "\n", omittingEmptySubsequences: false)
     .map(String.init)
 }
 
