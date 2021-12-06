@@ -6,6 +6,7 @@ let input02 = readInput("day02")
 let input03 = readInput("day03")
 let input04 = readInput("day04")
 let input05 = readInput("day05")
+let input06 = readInput("day06")[0]
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
@@ -24,6 +25,9 @@ print("Day 04 part two: \(day04PartTwo(input04))")
 print()
 print("Day 05 part one: \(day05PartOne(input05))")
 print("Day 05 part two: \(day05PartTwo(input05))")
+print()
+print("Day 06 part one: \(day06PartOne(input06))")
+print("Day 06 part two: \(day06PartTwo(input06))")
 print()
 
 func readInput(_ day: String) -> [String] {
