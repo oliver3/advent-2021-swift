@@ -1,4 +1,4 @@
-class Matrix {
+class Matrix: Equatable, CustomStringConvertible {
   var values: [[Int]]
 
   init(_ values: [[Int]]) {
@@ -21,15 +21,27 @@ class Matrix {
   }
 
   subscript(index: Vector2) -> Int? {
-    return self[index.i, index.j]
+    get {
+      return self[index.i, index.j]
+    }
+    set(newValue) {
+      self[index.i, index.j] = newValue
+    }
   }
 
   subscript(i: Int, j: Int) -> Int? {
-    guard values.indices.contains(i), values[i].indices.contains(j) else {
-      return nil
-    }
+    get {
+      guard values.indices.contains(i), values[i].indices.contains(j) else {
+        return nil
+      }
 
-    return values[i][j]
+      return values[i][j]
+    }
+    set(newValue) {
+      if let newValue = newValue, values.indices.contains(i), values[i].indices.contains(j) {
+        values[i][j] = newValue
+      }
+    }
   }
 
   var indices: [Vector2] {
@@ -42,6 +54,24 @@ class Matrix {
 
   func enumerated() -> [(index: Vector2, value: Int)] {
     return indices.map { ($0, self[$0]!) }
+  }
+
+  func allSatisfy(_ predicate: (Int) throws -> Bool) rethrows -> Bool {
+    for (_, value) in enumerated() {
+      if try predicate(value) == false {
+        return false
+      }
+    }
+
+    return true
+  }
+
+  static func == (lhs: Matrix, rhs: Matrix) -> Bool {
+    return lhs.values == rhs.values
+  }
+
+  var description: String {
+    return "\n" + values.map { line in line.map(String.init).joined() }.joined(separator: "\n") + "\n"
   }
 }
 
@@ -58,7 +88,7 @@ struct Vector2: Equatable, Hashable, CustomStringConvertible {
     self.j = j
   }
 
-  func adjacent() -> [Vector2] {
+  func adjacentOrthogonal() -> [Vector2] {
     return [
       Vector2(i - 1, j),
       Vector2(i, j + 1),
@@ -67,5 +97,16 @@ struct Vector2: Equatable, Hashable, CustomStringConvertible {
     ]
   }
 
+  func adjacentDiagonal() -> [Vector2] {
+    return [
+      Vector2(i - 1, j + 1),
+      Vector2(i + 1, j + 1),
+      Vector2(i + 1, j - 1),
+      Vector2(i - 1, j - 1),
+    ]
+  }
 
+  func adjacentAll() -> [Vector2] {
+    return adjacentOrthogonal() + adjacentDiagonal()
+  }
 }

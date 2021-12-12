@@ -5,7 +5,7 @@ public func day09PartOne(_ input: [String]) -> Int {
 
   return heightmap.enumerated()
     .filter { location, height in
-      height < location.adjacent().compactMap { heightmap[$0] }.min()!
+      height < location.adjacentOrthogonal().compactMap { heightmap[$0] }.min()!
     }
     .map { _, height in height + 1 }
     .reduce(0, +)
@@ -16,7 +16,7 @@ func basinSize(start: Vector2, heightmap: Matrix) -> Int {
 
   while true {
     let newPoints = points
-      .flatMap { $0.adjacent() }
+      .flatMap { $0.adjacentOrthogonal() }
       .unique()
       .filter { heightmap[$0] ?? 9 < 9 }
       .filter { !points.contains($0) }
@@ -36,7 +36,7 @@ public func day09PartTwo(_ input: [String]) -> Int {
 
   let lowPoints = heightmap.enumerated()
     .filter { location, height in
-      height < location.adjacent().compactMap { heightmap[$0] }.min()!
+      height < location.adjacentOrthogonal().compactMap { heightmap[$0] }.min()!
     }
     .map { location, _ in location }
 
