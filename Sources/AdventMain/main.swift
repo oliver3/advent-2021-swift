@@ -10,6 +10,7 @@ let input06 = readInput("day06")[0]
 let input07 = readInput("day07")[0]
 let input08 = readInput("day08")
 let input09 = readInput("day09")
+let input10 = readInput("day10")
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
@@ -41,11 +42,20 @@ print()
 print("Day 09 part one: \(day09PartOne(input09))")
 print("Day 09 part two: \(day09PartTwo(input09))")
 print()
+print("Day 10 part one: \(day10PartOne(input10))")
+print("Day 10 part two: \(day10PartTwo(input10))")
+print()
 
 
 func readInput(_ day: String) -> [String] {
-  let file = Bundle.module.url(forResource: "Inputs/\(day)", withExtension: "txt")
-  let content = try! String(contentsOf: file!, encoding: .utf8)
+  guard let file = Bundle.module.url(forResource: "Inputs/\(day)", withExtension: "txt") else {
+    fatalError("Could not find text file \(day)")
+  }
+
+  guard let content = try? String(contentsOf: file, encoding: .utf8) else {
+    fatalError("Could not read text file \(day)")
+  }
+
   return content
     .trimmingCharacters(in: .whitespacesAndNewlines)
     // Do not forget omittingEmptySubsequences false or else empty lines are not returned wtf
