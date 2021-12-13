@@ -12,6 +12,7 @@ let input08 = readInput("day08")
 let input09 = readInput("day09")
 let input10 = readInput("day10")
 let input11 = readInput("day11")
+let input12 = readInput("day12")
 
 print("Day 01 part one: \(day01PartOne(input01))")
 print("Day 01 part two: \(day01PartTwo(input01))")
@@ -48,6 +49,9 @@ print("Day 10 part two: \(day10PartTwo(input10))")
 print()
 print("Day 11 part one: \(day11PartOne(input11))")
 print("Day 11 part two: \(day11PartTwo(input11))")
+print()
+print("Day 12 part one: \(day12PartOne(input12))")
+print("Day 12 part two: \(day12PartTwo(input12))")
 print()
 
 
